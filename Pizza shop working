@@ -1,0 +1,95 @@
+  Java code showing the working of Pizza shop. It shows the number of pizzas available of a various types and asks the number of pizzas we want to order of many types.If the number of pizzas are less than the number of pizzas we want ,it'll display that there are no sufficient pizzas of that type.
+
+Code:
+
+import java.util.*;
+class MyException extends Exception{
+	public MyException(String s) {
+		super(s);
+	}
+}
+public class Pizza implements Cloneable {
+	int varities;
+	int customers;
+	public Pizza(int varities,int customers) {
+		this.varities=varities;
+		this.customers=customers;
+	}
+	void buypizza() {
+		Scanner sc=new Scanner(System.in);
+		try 
+		{
+			int []A= {10,20,30,40};
+			while(true) {
+			System.out.println("Choose the pizza variety: \n 1.Cheese Pizza \t 2.Veggie Pizza \t 3.Pepperoni Pizza \t 4.Meat Pizza \t 5.Exit");
+			int ch=sc.nextInt();
+			switch(ch) {
+			case 1:
+				System.out.println("you ordered Cheese Pizza");
+				System.out.println("Enter the no of pizzas you want:");
+				int n1=sc.nextInt();
+				if(n1>A[0]) {
+					throw new MyException("Insufficient Pizzas");
+				}
+				else {
+					A[0]=A[0]-n1;
+					System.out.println(n1+" Cheese Pizzas are given");
+				}
+				break;
+			case 2:
+				System.out.println("you ordered Veggie Pizza");
+				System.out.println("Enter the no of pizzas you want:");
+				int n2=sc.nextInt();
+				if(n2>A[1]) {
+					throw new MyException("Insufficient Pizzas");
+				}
+				else {
+					A[1]=A[1]-n2;
+					System.out.println(n2+" Veggie Pizzas are given");
+				}
+				break;
+			case 3:
+				System.out.println("you ordered Pepperoni Pizza");
+				System.out.println("Enter the no of pizzas you want:");
+				int n3=sc.nextInt();
+				if(n3>A[2]) {
+					throw new MyException("Insufficient Pizzas");
+				}
+				else {
+					A[2]=A[2]-n3;
+					System.out.println(n3+" Pepperoni Pizzas are given");
+				}
+				break;
+			case 4:
+				System.out.println("you ordered Meat Pizza");
+				System.out.println("Enter the no of pizzas you want:");
+				int n4=sc.nextInt();
+				if(n4>A[3]) {
+					throw new MyException("Insufficient Pizzas");
+				}
+				else {
+					A[3]=A[3]-n4;
+					System.out.println(n4+" Meat Pizzas are given");
+				}
+				break;
+			case 5:
+				System.out.println("Next Customer");
+				break;
+			default:
+				throw new MyException("variety is out of the menu");
+			}
+		}
+		}
+		catch(Exception e)
+		{
+			System.out.println(e.getMessage());
+			System.out.println("Exception handled");
+		}
+	}
+	public static void main(String[] args)throws CloneNotSupportedException {
+		// TODO Auto-generated method stub
+		Pizza obj=new Pizza(4,2);
+		Pizza obj1=(Pizza)obj.clone();  //deep cloning
+		obj1.buypizza();
+	}
+}
