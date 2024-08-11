@@ -1,0 +1,52 @@
+Java code that displays Player , Enemy in the game and also the action that the players need to take .
+
+CODE:
+
+abstract class Character{
+	String name; 
+	int health;
+	int attack;
+	int defence;
+	public Character (String name,int health,int attack,int defence) {
+		this.name=name;
+		this.health=health;
+		this.attack=attack;
+		this.defence=defence;
+	}
+	void display() {
+		System.out.println("Name: "+ name);
+		System.out.println("Health: "+ health);
+		System.out.println("Attack: "+ attack);
+		System.out.println("Defence: "+ defence);
+	}
+	abstract void performattack(String target);
+	}
+class Player extends Character{
+	public Player(String name,int health,int attack,int defence) {
+	super(name,health,attack,defence);
+}
+	public void performattack(String target) {
+		System.out.println("Attack on target "+target);
+}
+}
+class Enemy extends Character{
+	public Enemy(String name,int health,int attack,int defence) {
+		super(name,health,attack,defence);
+	}
+	  public void performattack(String target) {
+			System.out.println("Attack on target "+target);
+	}
+}
+public class Game {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+	    Player obj=new Player("Udit",100,10,5);
+		Enemy obj1=new Enemy("Jyosh",100,5,10);
+		obj.display();
+		obj1.display();
+		obj.performattack(obj1.name);
+		obj1.performattack(obj.name);
+	}
+
+}
