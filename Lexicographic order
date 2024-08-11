@@ -1,0 +1,43 @@
+Java code for lexicographic order.
+
+CODE:
+
+import java.util.*;
+public class Sort1 <T extends Comparable<T>>  {
+	public void sort(T []list) {
+		for(int i=0;i<list.length;i++) {
+			for(int j=0;j<list.length-i-1;j++) {
+				if(list[j].compareTo(list[j+1])>0) {
+					T temp=list[j];
+					list[j]=list[j+1];
+					list[j+1]=temp;
+				}
+			}
+		}
+			System.out.println(Arrays.asList(list));
+		}
+	public static void lexnumbers(int n) {
+		Sort1<String>obj2=new Sort1<String>();
+		String []arr=new String[n];
+		for(int i=1;i<=n;i++) {
+			arr[i-1]=String.valueOf(i);
+		}
+		obj2.sort(arr);
+		Integer []arr1=new Integer[n];
+		for(int i=0;i<n;i++) {
+			arr1[i]=Integer.valueOf(arr[i]);
+			}
+		}
+	
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Sort1<Integer> obj=new Sort1<Integer>();
+		Integer a[]= {12,65,76,23,90};
+		obj.sort(a);
+		Sort1<String>obj1=new Sort1<String>();
+		String b[]= {"apple","mango","banana","grapes"};
+		obj1.sort(b);
+		System.out.println("Lexicographic order is");
+		lexnumbers(15);
+	}
+}
