@@ -1,0 +1,45 @@
+Java code to display the details of mandatory and Elective courses in University using abstract and extend keywords.
+
+Code:
+
+abstract class University{
+	protected String course_id;
+	protected String name;
+	protected int credithours;
+	public University(String course_id,String name,int credithours) {
+		this.course_id=course_id;
+		this.name=name;
+		this.credithours=credithours;
+	}
+	 abstract void show() ;
+	}
+class Mandatory extends University{
+	public Mandatory(String course_id,String name,int credithours) {
+		super(course_id,name,credithours);
+	}
+	public void show() {
+		System.out.println("the course id is "+course_id);
+		System.out.println("the course name is "+name);
+		System.out.println("the course credithours are "+credithours);
+	}
+	}
+class Elective extends University{
+	public Elective(String course_id,String name,int credithours) {
+		super(course_id,name,credithours);
+	}
+	public void show() {
+		System.out.println("the course id is "+course_id);
+		System.out.println("the course name is "+name);
+		System.out.println("the course credithours are "+credithours);
+	}
+}
+public class Courses {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		University obj=new Mandatory("MAT 1001","Integration",4);
+		University obj1=new Elective("Eng 2001","PROFESSIONAL ENGLISH",4);
+		obj.show();
+		obj1.show();
+}
+}
