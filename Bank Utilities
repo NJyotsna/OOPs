@@ -1,0 +1,206 @@
+Java code for bank utilities.
+
+CODE:
+
+class MyException1 extends Exception{
+	public MyException1(String message) {
+		super(message);
+	}
+}
+interface Account{
+	void CreateAcc();
+	void Deposit();
+	void Withdraw();  //abstract methods
+}
+class BankUtilities{
+	int acctype;
+	int year=1;
+	int ssn=0;
+	int accnum;
+	float intr;
+	String name="";
+	String loc="";
+	Scanner sc=new Scanner(System.in);
+	Random rnd=new Random();
+	double temp=0.0;
+	double bal=0.0;
+}
+class Bankers extends BankUtilities implements Account{
+	void getInfo() {
+		try 
+		{
+			System.out.println("Enter the name of the customer");
+			name=sc.next();
+			System.out.println("Enter the SSN number");
+			ssn=sc.nextInt();
+			System.out.println("Enter the name of the location");
+			loc=sc.next();
+			System.out.println("Enter the account type: \n 1.Savings(10% interest) \t 2.Current(7% interest)");
+			acctype=sc.nextInt();
+			switch(acctype){
+			case 1:
+				System.out.println("Enter the amount to be deposited");
+				temp=sc.nextFloat();
+				if(temp<0) {
+					System.out.println("Invalid amount \n Try again");
+					System.out.println("Enter the amount to be deposited");
+					temp=sc.nextFloat();
+					bal=bal+temp;
+					checkbalance();
+				}
+				else {
+					bal=bal+temp;
+					checkbalance();
+				}
+				System.out.println("Enter the number of years:");
+				int years=sc.nextInt();
+		       if(year==0) {
+					System.out.println("Invalid year");
+					System.out.println("Enter the number of years");
+					year=sc.nextInt();
+				}
+				break;
+			case 2:
+				System.out.println("Enter the initial amount:");
+				temp=sc.nextFloat();
+				if(temp<0) {
+					System.out.println("Invalid amount \n Try again");
+					System.out.println("Enter the amount to be deposited");
+					temp=sc.nextFloat();
+					bal=bal+temp;
+				}
+				else {
+					bal=bal+temp;
+					checkbalance();
+				}
+				Deposit();
+				break;
+			default:
+				System.out.println("Invalid Option");
+				}
+		}
+		catch(Exception e)
+		{
+			System.out.println("User-defined Exception");
+			System.out.println(e.getMessage());
+		}
+}
+	public void CreateAcc() { // Abstract method 1
+		try 
+		{
+			getInfo();
+			System.out.println("Account Created Successfully");
+			accnum=rnd.nextInt(1000)+1;
+		}
+		catch(Exception f) 
+		{
+			System.out.println("Fatal Error");
+		}
+	}
+	public void Deposit() { // Abstract method 2
+		try {
+			System.out.println("Enter amount to be deposited:");
+			double temp=sc.nextDouble();
+			if(temp>=500) {
+				bal=bal+temp;
+				System.out.println("Successfully Credited");
+			}
+			else {
+				throw new MyException1("Invalid Exception");
+			}
+		}
+		catch(MyException1 e) {
+			System.out.println(e.getMessage());
+			System.out.println("Transation failed");
+		}
+	}
+	public void Withdraw() {  // Abstract method 3
+		System.out.println("Enter the amount to be withdrawn:");
+		temp=sc.nextFloat();
+		if(temp<=0) {
+			System.out.println("Invalid amount");
+			System.exit(0);
+		}
+		try {
+			if(temp<bal) {
+				bal=bal-temp;
+				System.out.println("Successfully debited");
+			}
+			else {
+				throw new MyException1("Invalid Exeption");
+			}
+		}
+		catch(MyException1 a) {
+			System.out.println("Transaction Failure");
+			System.out.println(a.getMessage());
+		}
+	}
+	public void interest() {
+		try 
+		{
+			if(ssn==0) {
+				throw new MyException1("Account Number not found");
+			}
+			else {
+				if(acctype==1) {
+					bal=bal+(year*bal*0.10);
+					System.out.println("Interest Added");
+				}
+				else if(acctype==2) {
+					bal =bal+(bal*year*0.07);
+					System.out.println("Interest Added");
+				}
+			}
+		}
+		catch(MyException1 d)
+		{
+			System.out.println("Transaction Failed");
+			System.out.println(d.getMessage());
+		}
+	}
+	void checkbalance() {
+		System.out.println("The balance is "+bal);
+	}
+}
+public class Users2 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Scanner sc=new Scanner(System.in);
+		Bankers obj=new Bankers();
+		System.out.println("Bank Simulator");
+		try
+		{
+			while(true) {
+				System.out.println("1. Create Account \t 2.checkbalance \t 3.Deposit  \t 4. Withdraw \t 5.Interest \t 6.Exit");
+				int ch=sc.nextInt();
+				switch(ch) {
+				case 1:
+					obj.CreateAcc();
+					break;
+				case 2:
+					obj.checkbalance();
+					break;
+				case 3:
+					obj.Deposit();
+					break;
+				case 4:
+					obj.Withdraw();
+					break;
+				case 5:
+					obj.interest();
+					break;
+				case 6:
+					System.exit(0);
+					break;
+				default:
+					System.out.println("Invalid option");
+				}
+			}
+		}
+		catch(Exception c)
+		{
+			System.out.println("Self throw "+c);
+		}
+	}
+}
