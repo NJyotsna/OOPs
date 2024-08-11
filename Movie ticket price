@@ -1,0 +1,81 @@
+Java code that calculates ticket price for various types of movies.
+
+CODE:
+
+import java.util.*;
+class movie{
+	protected String title;
+	protected String rating;
+	protected int duration;
+	public movie(String title,String rating,int duration)
+	{
+		this.title=title;
+		this.rating=rating;
+		this.duration=duration;
+	}
+	public double calculateTicketPrice()
+	{
+		return 10.0;
+	}
+}
+class RegularMovie extends movie
+{
+	public RegularMovie(String title,String rating,int duration) {
+		super(title,rating,duration);
+		}
+	 public double calculateTicketPrice()
+	{
+		if (this.duration>120) {
+			return 12.0;
+		}
+		else {
+			return 10.0;
+		}
+	}
+	}
+class ChildrensMovie extends movie
+{
+	public ChildrensMovie(String title,String rating,int duration) {
+		super(title, rating, duration);
+	}
+	public double calculateTicketPrice() {
+		return 8.0;
+	}
+}
+class NewReleaseMovie extends movie
+{
+	public NewReleaseMovie(String title,String rating,int duration) {
+		super(title,rating,duration);
+	}
+	public double calculateTicketPrice() {
+		return 15.0;
+	}
+}
+class BlockbusterMovie extends movie
+{
+	public BlockbusterMovie(String title,String rating,int duration) {
+		super(title,rating,duration);
+	}
+	public double calculateTicketPrice() {
+		return 20.0;
+	}
+}
+public class Movies {
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		movie obj = new RegularMovie("The matrix","R",136);
+		movie obj1 = new ChildrensMovie("Toy Story","G",90);
+		movie obj2 = new NewReleaseMovie("Spider-Man","PG-133",150);
+		movie obj3 = new BlockbusterMovie("Avengers-End Game","PG-143",181);
+		
+		double regularticketprice= obj.calculateTicketPrice();
+		double childrenticketprice= obj1.calculateTicketPrice();
+		double newreleaseticketprice = obj2.calculateTicketPrice();
+		double blockbusterticketprice = obj3.calculateTicketPrice();
+		
+		System.out.println("The ticket price for "+obj.title+" is $"+ regularticketprice);
+		System.out.println("The ticket price for "+obj1.title+" is $"+ childrenticketprice);
+		System.out.println("The ticket price for "+obj2.title+" is $"+ newreleaseticketprice);
+		System.out.println("The ticket price for "+obj3.title+" is $"+ blockbusterticketprice);	
+	}
+}
