@@ -1,0 +1,98 @@
+Java code that depicts money transactions in ATM using validate pin.
+
+Code:
+
+import java.util.*;
+class Account {
+	protected int acc_num;
+	public int balance;
+    public int money;
+	public Account(int acc_num,int balance,int money) {
+		this.acc_num=acc_num;
+		this.balance=balance;
+		this.money=money;
+	}
+	public String makeWithdrawal() {
+		String c;
+		if(balance>=money) {
+			c="withdrawal can be done";
+		}
+		else {
+			c="Insufficient balance ";
+		}
+		return c;
+	}
+	public void validatePin() {
+		
+	}
+	public int withdraw() {
+		return balance-money;
+	}
+	public void startTransaction() {
+		 
+	}
+	public void endTransaction() {
+		if(balance>=money) {
+		System.out.println("Transaction is successful");
+	}
+		else {
+			System.out.println("Transaction is unsuccessful");
+		}
+	}
+}
+class Card extends Account{
+	int entered_pin;
+	int pin;
+	int card_number;
+	public Card(int pin,int entered_pin,int card_number) {
+		super(pin,entered_pin,card_number);
+	}
+	public void validatePin() {
+		if(entered_pin==pin) {
+			System.out.println("Pin is valid");
+		}
+		else {
+			System.out.println("Pin is Invalid");
+		}
+	}
+}
+class ATM extends Account {
+	public ATM(int card_number,int balance,int money) {
+		super(card_number,balance,money);
+	}
+	public int withdraw() {
+		balance=balance-money;
+		return balance;
+}
+	public void startTransaction() {
+		System.out.println("Starting Transaction...");
+	}
+}
+
+public class Banks {
+
+	public static void main(String[] args)throws CloneNotSupportedException {
+		// TODO Auto-generated method stub
+		Scanner sc=new Scanner(System.in);
+		System.out.println("Enter account number :");
+		int acc_num=sc.nextInt();
+		System.out.println("Enter card number :");
+		int card_number=sc.nextInt();
+		System.out.println("Enter cardPin :");
+		int pin=sc.nextInt();
+		System.out.println("Enter balance :");
+		int balance=sc.nextInt();
+		System.out.println("Enter money to withdraw :");
+		int money=sc.nextInt();
+		System.out.println("Enter pin for transaction");
+		int entered_pin=sc.nextInt();
+		Account obj=new Card(card_number,pin,entered_pin);
+		Account obj1=new ATM(card_number,balance,money);
+		obj1.startTransaction();
+		obj.validatePin();
+		System.out.println(obj.makeWithdrawal());
+		System.out.println("Balance after withdrawal :"+obj1.withdraw());
+		obj.endTransaction();
+	}
+}
+
