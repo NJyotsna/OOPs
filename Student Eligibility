@@ -1,0 +1,84 @@
+Java code for checking the eligiblity of a student for a course.
+
+CODE:
+import java.util.*;
+class NotEligibleException extends Exception{
+	public NotEligibleException(String s) {
+		super(s);
+	}
+}
+class WaitingListException extends Exception{
+	public WaitingListException(String s) {
+		super(s);
+	}
+}
+class Student {
+	String Name;
+	int Regno;
+	String Course;
+	public Student(String Name,int Regno,String Course) {
+		this.Name=Name;
+		this.Regno=Regno;
+		this.Course=Course;
+	}
+	public void getdetails() {
+		System.out.println("Name: "+Name);
+		System.out.println("Regno: "+Regno);
+		System.out.println("Course: "+Course);
+	}
+}
+class Mark extends Student{
+	public Mark(String Name,int Regno,String Course) {
+		super(Name,Regno,Course);
+	}
+	int part1;
+	int part2;
+	int core;
+	int Total;
+	Scanner sc=new Scanner(System.in);
+	public void Entermarks() {
+	System.out.println("Enter marks: \n 1.part1(max 50) \t 2.part2(max) \t 3.core(max 100)");
+	System.out.println("Enter part1 marks:");
+	 part1=sc.nextInt();
+	System.out.println("Enter part2 marks:");
+	 part2=sc.nextInt();
+	System.out.println("Enter core marks:");
+    core=sc.nextInt();
+    Total=part1+part2+core;
+	}
+	public void getmarks() {
+		System.out.println("Part1 marks: "+part1);
+		System.out.println("Part2 marks: "+part2);
+		System.out.println("Core marks: "+core);
+	}
+	public void CalcEntranceMark() throws NotEligibleException,WaitingListException {
+		
+			if(Total<100) {
+				throw new NotEligibleException("NOT ELIGIBLE");
+			}
+			else if(Total>=100 && Total<150) {
+				throw new WaitingListException("WAITING LIST");
+			}
+			else if(Total>=150) {
+				System.out.println("ELIGIBLE");
+			}
+			}
+		}
+
+public class User9 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		try {
+		Mark obj=new Mark("Jyotsna",20098,"Cse");
+		obj.getdetails();
+		obj.Entermarks();
+		obj.getmarks();
+		obj.CalcEntranceMark();
+	}
+		catch(Exception e) {
+			System.out.println(e.getMessage());
+			System.out.println("Exception handled");
+		}
+	}
+}
