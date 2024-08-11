@@ -1,0 +1,217 @@
+Java code for calculating my grade for the fresh year in Bachelors using "Extends" keyword. 
+
+Code:
+
+import java.util.*;
+class Subject
+{
+	protected String sem;
+	protected int marks;
+	public Subject(String sem,int marks) {
+		this.sem=sem;
+		this.marks=marks;
+	}
+	public char showgrade() {
+	return 'S';
+}
+}
+class Math extends Subject{
+	public Math(String sem,int marks) {
+		super(sem,marks);
+	}
+	public char showgrade() {
+		char grade;
+		if (marks>=94) {
+			 grade='S';
+		}
+		else if(marks >=81 && marks <94) {
+			 grade ='A';
+		}
+		else if(marks >=66 && marks <81) {
+			 grade ='B';
+		}
+		else if(marks>=59 && marks<66) {
+			 grade = 'C';
+		}
+		else if(marks>=52 && marks<59) {
+			 grade ='D';
+		}
+		else if(marks>=44 && marks<52){
+		     grade ='E';
+		}
+		else {
+			grade ='F';
+		}
+	return grade;
+	}
+}
+class Chem extends Subject{
+	public Chem(String sem,int marks) {
+		super(sem,marks);
+	}
+	public char showgrade() {
+		char grade;
+		if (marks>=95) {
+			 grade='S';
+		}
+		else if(marks >=85 && marks <95) {
+			 grade ='A';
+		}
+		else if(marks >=76 && marks <85) {
+			 grade ='B';
+		}
+		else if(marks>=71 && marks<76) {
+			 grade = 'C';
+		}
+		else if(marks>=66 && marks<71) {
+			 grade ='D';
+		}
+		else if(marks>=50 && marks<66){
+		     grade ='E';
+		}
+		else {
+			grade ='F';
+		}
+	return grade;
+	}
+}
+class ECE extends Subject{
+	public ECE(String sem,int marks) {
+		super(sem,marks);
+	}
+	public char showgrade() {
+		char grade;
+		if (marks>=91) {
+			 grade='S';
+		}
+		else if(marks >=85 && marks <91) {
+			 grade ='A';
+		}
+		else if(marks >=74 && marks <85) {
+			 grade ='B';
+		}
+		else if(marks>=69 && marks<74) {
+			 grade = 'C';
+		}
+		else if(marks>=63 && marks<69) {
+			 grade ='D';
+		}
+		else if(marks>=50 && marks<63){
+		     grade ='E';
+		}
+		else {
+			grade ='F';
+		}
+	return grade;
+	}
+}
+class CSE extends ECE{
+	public CSE(String sem,int marks) {
+		super(sem,marks);
+	}
+	public char showgrade() {
+		char grade;
+		if (marks>=89) {
+			 grade='S';
+		}
+		else if(marks >=79 && marks <89) {
+			 grade ='A';
+		}
+		else if(marks >=69 && marks <79) {
+			 grade ='B';
+		}
+		else if(marks>=65 && marks<69) {
+			 grade = 'C';
+		}
+		else if(marks>=60 && marks<65) {
+			 grade ='D';
+		}
+		else if(marks>=50 && marks<60){
+		     grade ='E';
+		}
+		else {
+			grade ='F';
+		}
+	return grade;
+	}
+}
+class Eng extends Subject{
+	public Eng(String sem,int marks) {
+		super(sem,marks);
+	}
+	public char showgrade() {
+		char grade;
+		if (marks>=90) {
+			 grade='S';
+		}
+		else if(marks >=81 && marks <90) {
+			 grade ='A';
+		}
+		else if(marks >=74 && marks <81) {
+			 grade ='B';
+		}
+		else if(marks>=70 && marks<74) {
+			 grade = 'C';
+		}
+		else if(marks>=66 && marks<70) {
+			 grade ='D';
+		}
+		else if(marks>=50 && marks<66){
+		     grade ='E';
+		}
+		else {
+			grade ='F';
+		}
+	return grade;
+	}
+}
+class STS extends Subject{
+	public STS(String sem,int marks) {
+		super(sem,marks);
+	}
+	public char showgrade() {
+		char grade;
+		if (marks>=90) {
+			 grade='S';
+		}
+		else if(marks >=80 && marks <90) {
+			 grade ='A';
+		}
+		else if(marks >=70 && marks <80) {
+			 grade ='B';
+		}
+		else if(marks>=60 && marks<70) {
+			 grade = 'C';
+		}
+		else if(marks>=55 && marks<60) {
+			 grade ='D';
+		}
+		else if(marks>=50 && marks<55){
+		     grade ='E';
+		}
+		else {
+			grade ='F';
+		}
+	return grade;
+	}
+}
+public class Grade {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Subject obj = new Math("First semester",94);
+		Subject obj1 = new Chem("First semester",92);
+		Subject obj2 = new ECE("First semester",94);
+		Subject obj3 = new CSE("First semester",90);
+		Subject obj4 = new Eng("First semester",85);
+		Subject obj5 = new STS("First semester",80);
+		
+		System.out.println("The Grade got in the Math subject is "+obj.showgrade());
+		System.out.println("The Grade got in the Chem subject is "+obj1.showgrade());
+		System.out.println("The Grade got in the ECE subject is "+obj2.showgrade());
+		System.out.println("The Grade got in the CSE subject is "+obj3.showgrade());
+		System.out.println("The Grade got in the Eng subject is "+obj4.showgrade());
+		System.out.println("The Grade got in the STS subject is "+obj5.showgrade());
+	}
+
+}
