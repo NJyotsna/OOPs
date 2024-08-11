@@ -1,0 +1,34 @@
+Java code for working of a restaurant that can add and show the  orders of different tables in the restaurant.
+
+CODE:
+
+import java.util.*;
+public class Restaurant {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		ArrayList<String> [] list= new ArrayList [4];
+		for(int i=0;i<list.length;i++) {
+			list[i]=new ArrayList<String>();
+		}
+		list[0].add("Hamburger");
+		list[0].add("French Fries");
+		
+		list[1].add("Steak");
+		list[1].add("baked potato");
+		list[1].add("beans");
+		
+		list[2].add("Chicken Sandwich");
+		list[2].add("Onion rings");
+		list[2].add("coke");
+		
+		list[3].add("Fish and chips");
+		
+		for(int i=0;i<list.length;i++) {
+			System.out.println("Table "+(i+1)+" orders :");
+			list[i].forEach((n)->System.out.println(n));
+			System.out.println();
+		}
+	}
+
+}
