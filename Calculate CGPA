@@ -1,0 +1,53 @@
+Java code to calculate CGPA
+
+CODE:
+
+abstract class Grade{
+	abstract double getCGPA();
+}
+class Sam extends Grade{
+	double Grade1;
+	double Grade2;
+	double Grade3;
+	double Grade4;
+	public Sam(double Grade1,double Grade2,double Grade3, double Grade4) {
+		this.Grade1=Grade1;
+		this.Grade2=Grade2;
+		this.Grade3=Grade3;
+		this.Grade4=Grade4;
+	}
+	public double getCGPA() {
+		double sum;
+		double CGPA;
+		sum=Grade1+Grade2+Grade3+Grade4;
+		CGPA=sum/4;
+		return CGPA;
+	}
+}
+class John extends Grade{
+	double grade1;
+	double grade2;
+	double grade3;
+	public John(double grade1,double grade2,double grade3) {
+		this.grade1=grade1;
+		this.grade2=grade2;
+		this.grade3=grade3;
+	}
+	public double getCGPA() {
+		double sum1;
+		double CGPA1;
+		sum1=grade1+grade2+grade3;
+		CGPA1=sum1/4;
+		return CGPA1;
+	}
+}
+public class Cat21 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Sam obj=new Sam(7.5,8,8.5,9);
+		John obj1=new John(8,9.5,9);
+		System.out.println("cgpa of sam is "+obj.getCGPA());
+		System.out.println("cgpa of John is "+obj1.getCGPA());
+	}
+}
