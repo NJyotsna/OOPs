@@ -1,0 +1,107 @@
+Java program for student UPI Account.
+
+CODE:
+
+import java.util.*;
+class MyException extends Exception{
+	public MyException(String s) {
+		super(s);
+	}
+}
+public class VIT_Student_UPI_Account {
+	String Student_Name;
+	int Acct_No;
+	int UPI_ID;
+	int User_pwd;
+	int Balance_Amount;
+	long Phone_Number;
+	Scanner sc=new Scanner (System.in);
+	Random rnd=new Random();
+	public void Create_Account() throws MyException  {
+		if(Student_Name!="") {
+		System.out.println("Enter Student_name:");
+		Student_Name=sc.next();
+		System.out.println("ACC NO:");
+		Acct_No=rnd.nextInt(1000)+1;
+		System.out.println("Enter UPI_ID:");
+		UPI_ID=sc.nextInt();
+		System.out.println("Enter User_pwd:");
+		User_pwd=Integer.parseInt(sc.next());
+		System.out.println("Enter the balance:");
+		Balance_Amount=sc.nextInt();
+		System.out.println("Enter the phone number:");
+		long Phone_Number=sc.nextLong();
+		System.out.println("Your UPI Account is successfully created");
+	}
+		else {
+			throw new MyException("Already Created");
+		}
+	}
+	public void get_account_balance() {
+		System.out.println("the balance is "+Balance_Amount);	
+		}
+	public void delete_Account() throws MyException {
+		if(Student_Name!=null) {
+			System.out.println("Account deleted successfully");
+		}
+		else {
+			throw new MyException("No Account Created");
+		}
+	}
+	public void Receive_Amount() {
+		int amt;
+		System.out.println("Enter amount to be deposited:");;
+		amt=sc.nextInt();
+		Balance_Amount=Balance_Amount+amt;
+		get_account_balance();
+	}
+	public void Sent_Amount() throws MyException{
+		int amt;
+		System.out.println("Enter amount to be sent:");
+		amt=sc.nextInt();
+		if(Balance_Amount<0 || Balance_Amount<amt) {
+			throw new MyException("Insufficient_Balance");
+		}
+		else {
+			System.out.println("Amount sent");
+			Balance_Amount=Balance_Amount-amt;
+			get_account_balance();
+		}
+	}
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Scanner sc=new Scanner(System.in);
+		try {
+			System.out.println("1.Create Account /t 2.get balance /t 3. delete account /t 4. receive amt /t 5.sent amt");
+			System.out.println("Enter choice:");
+			VIT_Student_UPI_Account obj1=new VIT_Student_UPI_Account();
+			while (true){
+			int ch=sc.nextInt();
+			switch(ch) {
+			case 1:
+				obj1.Create_Account();
+				break;
+			case 2:
+				obj1.get_account_balance();
+				break;
+			case 3:
+				obj1.delete_Account();
+				System.exit(0);
+				break;
+			case 4:
+				obj1.Receive_Amount();
+				break;
+			case 5:
+				obj1.Sent_Amount();
+				break;
+				default:
+					System.out.println("Invalid choice");
+			}
+			}
+	}
+		catch(MyException e) {
+			System.out.println(e.getMessage());
+			System.out.println("Exception handled");
+		}
+	}
+}
