@@ -1,0 +1,55 @@
+Java code for availability of doctors and for doctor-patient ratio.
+
+CODE:
+
+import java.util.*;
+public class Doctor_Appointment {
+	String []a=new String[5];
+	int []b=new int[5];
+	Scanner sc=new Scanner(System.in);
+	public void display() {
+		for(int i=0;i<5;i++) {
+			System.out.println("Enter the doctor availability,patients on day "+(i+1));
+			a[i]=sc.next();
+			b[i]=sc.nextInt();
+	}
+	}
+	public void Avg_Pat_Vist() {
+		int sum=0;
+		for(int i=0;i<3;i++) {
+			sum+=b[i];
+		}
+		System.out.println("Average no of patients from day 1to 3 is"+sum/3);
+	}
+	public void Day_4() {
+		if(a[3]=="Yes") {
+			System.out.println("The doctor patient ratio on day 4 is "+ 1/b[3]);
+		}
+		else {
+			System.out.println("The doctor patient ratio on day 4 is "+0/b[3]);
+		}
+	}
+	public void Day_5() {
+		if(a[4]=="Yes") {
+			System.out.println("The doctor patient ratio on day 5 is "+1/b[4]);
+		}
+		else {
+			System.out.println("The doctor patient ratio on day 5 is "+0/b[4]);
+		}
+	}
+	
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		try {
+		Doctor_Appointment obj=new Doctor_Appointment();
+		obj.display();
+		obj.Avg_Pat_Vist();
+		obj.Day_4();
+		obj.Day_5();
+	}
+		catch(ArithmeticException e) {
+			System.out.println("Exception Caught");
+			System.out.println("Exception handled");
+		}
+}
+}
