@@ -1,0 +1,50 @@
+Java Program to find square root, log and factorial of any number.
+
+CODE:
+import java.util.*;
+import java.lang.Math;
+public class New1 {
+	public static int fact(int n) {
+		int result;
+		if(n==0) {
+			result =1;
+		}
+		else {
+			result=n*fact(n-1);
+		}
+		return result;
+		}
+	public void Calculate() {
+		System.out.println("What would you like to calculate?");
+		System.out.println(" 1. Sqrt \n 2. Log \n 3. Factorial");
+		Scanner sc=new Scanner(System.in);
+		int ch=sc.nextInt();
+		switch(ch) {
+		case 1:
+			System.out.println("Enter the number to sqrt:");
+			int n=sc.nextInt();
+			double r=Math.sqrt(n);
+			System.out.println(r);
+			break;
+		case 2:
+			System.out.println("Enter the number to find log:");
+			int n1=sc.nextInt();
+			double r1=Math.log(n1);
+			System.out.println(r1);
+			break;
+		case 3:
+			System.out.println("Enter the number to find factorial:");
+			int n2=sc.nextInt();
+			System.out.println(fact(n2));
+			break;
+			default:
+				System.out.println("Invalid choice");
+		}
+	}
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		System.out.println("Welcome to the simple math helper.");
+		New1 obj=new New1();
+		obj.Calculate();
+	}
+}
