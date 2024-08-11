@@ -1,0 +1,66 @@
+Java code to check whether it is a square matrix or an asymmetric matrix.
+
+CODE:
+
+class NotASquareMatrixException extends Exception{
+	public NotASquareMatrixException(String s) {
+		super(s);
+	}
+}
+class AsymmetricMatrixFoundException extends Exception{
+	public AsymmetricMatrixFoundException(String s) {
+		super(s);
+	}
+}
+public class Matrix {
+	void matrix()throws Exception{
+		Scanner sc= new Scanner(System.in);
+		System.out.println("Enter the no of rows:");
+		int m=sc.nextInt();
+		System.out.println("Enter the no of columns:");
+		int n=sc.nextInt();
+		int [][]arr=new int[m][n];
+		System.out.println("Enter elements of matrix:");
+		for(int i=0;i<m;i++) {
+			for(int j=0;j<n;j++) {
+				arr[i][j]=sc.nextInt();
+			}
+		}
+		while (true) {
+			System.out.println("Enter choice: \n 1.Check Square or not \t 2.Check Symmetricity");
+		int ch=sc.nextInt();
+		switch(ch) {
+		case 1:
+			if(m==n) {
+				System.out.println("It is a Square Matrix");
+			}
+			else {
+				throw new NotASquareMatrixException("Not a Square Matrix");
+			}
+			break;
+		case 2:
+			for(int i=0;i<m;i++) {
+				for(int j=0;j<n;j++) {
+					if(arr[i][j]==-arr[j][i]) {
+						throw new AsymmetricMatrixFoundException("It is an Asymmetric Matrix");
+					}
+				}
+			}
+			break;
+			default:
+				System.exit(0);
+		}
+		}
+	}
+	public static void main(String[] args)throws Exception {
+		// TODO Auto-generated method stub
+		try {
+			Matrix obj=new Matrix();
+			obj.matrix();
+		}
+		catch(Exception e) {
+			System.out.println(e.getMessage());
+			System.out.println("Exception handled");
+		}
+	}
+}
