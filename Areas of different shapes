@@ -1,0 +1,89 @@
+Java code to find the area of different shapes using exceptions and switch case.
+
+CODE:
+
+import java.util.*;
+
+public class Shape {
+	Scanner sc=new Scanner(System.in);
+	public void Circle(){
+		System.out.println("Enter tha value of radius");
+		int r=sc.nextInt();
+		try
+		{
+			if(r>0) {
+				double area=3.14*r*r;
+				System.out.println("Area of circle is "+area);
+			}
+			else {
+				throw new ArithmeticException(" Invalid Dimension");
+			}
+		}
+		catch(ArithmeticException e)
+		{
+			System.out.println("Exception Caught");
+			System.out.println(e.getMessage());
+			
+		}
+	}
+	public void Square() {
+		System.out.println("Enter the side of square:");
+		int s=sc.nextInt();
+		try
+		{
+			if(s>0) {
+				double area1=s*s;
+				System.out.println("Area of circle is "+area1);
+			}
+			else {
+				throw new ArithmeticException("Invalid Dimension");
+			}
+		}
+		catch(ArithmeticException a) 
+		{
+			System.out.println("Exception Caught");
+			System.out.println(a.getMessage());
+		}
+	}
+	public void Rectangle() {
+		System.out.println("Enter the length: ");
+		int l=sc.nextInt();
+		System.out.println("Enter the breadth: ");
+		int b=sc.nextInt();
+		try {
+			if(l>0 && b>0) {
+				int area2=l*b;
+				System.out.println("Area of rectangle is "+area2);
+			}
+			else {
+				throw new NumberFormatException("Wrong Dimension");
+			}
+		}
+		catch(NumberFormatException g) {
+			System.out.println("Exception Caught");
+			System.out.println(g.getMessage());
+		}
+	}
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Shape obj=new Shape();
+		Scanner sc=new Scanner(System.in);
+		System.out.println("Enter your choice: \n 1.Circle  \t 2.Square \t 3.Rectangle");
+		while(true) {
+			int ch=sc.nextInt();
+			switch(ch) {
+			case 1:
+				obj.Circle();
+				break;
+			case 2:
+				obj.Square();
+				break;
+			case 3:
+				obj.Rectangle();
+				break;
+			default:
+				System.out.println("Invalid choice");		
+			}
+		}
+	}}
