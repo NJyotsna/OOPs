@@ -1,0 +1,68 @@
+Java code that helps to validate a car using VIN , brand ,year and mileage .
+
+Code:
+
+import java.util.*;
+class WorkingCarException extends Exception{
+	public WorkingCarException(String s) {
+		super(s);
+	}
+}
+class WorkingCar {
+	int VIN;
+	String brand;
+	int year;
+	int mileage;
+	int price;
+	public WorkingCar(int VIN,String brand,int year,int mileage,int price) {
+		this.VIN=VIN;
+		this.brand=brand;
+		this.year=year;
+		this.mileage=mileage;
+		this.price=price;
+	}
+}
+public class CarException {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Scanner sc=new Scanner(System.in);
+		for (int i=0;i<7;i++) {
+			System.out.println("Enter VIN:");
+			int VIN=sc.nextInt();
+			System.out.println("Enter brand: ");
+			String brand=sc.next();
+			System.out.println("Enter year: ");
+			int year=sc.nextInt();
+			System.out.println("Enter mileage: ");
+			int mileage =sc.nextInt();
+			System.out.println("price: ");
+			int price=sc.nextInt();
+			WorkingCar obj=new WorkingCar(VIN,brand,year,mileage,price);
+			try 
+			{
+				if(obj.VIN >1000 && obj.VIN <9999  && obj.year>=1997 && obj.year<=2017 && obj.mileage>0 && obj.price>0 ) {
+					if(obj.brand=="ford" || obj.brand=="Toyota" || obj.brand=="Honda" || obj.brand=="Chrisyler") {
+							System.out.println("Car details: ");
+							System.out.println("VIN number: "+obj.VIN);
+							System.out.println("Brand : "+obj.brand);
+							System.out.println("mileage: "+obj.mileage);
+							System.out.println("Car price: "+obj.price);
+						}
+					else {
+						throw new WorkingCarException ("Invalid details");
+					}
+				}
+			 else {
+						throw new WorkingCarException ("Invalid details");
+				}	
+			}
+			catch(WorkingCarException e)
+			{
+				System.out.println("Exception Caught");
+				System.out.println(e.getMessage());
+			}
+		}
+	}
+}
+
