@@ -1,0 +1,50 @@
+Operations using array list for displaying Indian satellites.
+
+CODE:
+import java.util.*;
+public class Indian_Satellites {
+	ArrayList<String> Satellites_Names=new ArrayList<String>();
+	public void Display_Sat() {
+		System.out.println(Satellites_Names);
+	}
+	public void add() {
+		Satellites_Names.add("Aryabhatta");
+		Satellites_Names.add("Bhaskara Sega-I");
+		Satellites_Names.add("Rohini RS-I");
+		Satellites_Names.add("IRS-1A");
+		Satellites_Names.add("Cartosat-2C");
+		Satellites_Names.add("RISAT-2B");
+		Satellites_Names.add("EOS-01");	
+		Display_Sat();
+	}
+	public void removing() {
+		Satellites_Names.remove("Aryabhatta");
+		Satellites_Names.remove("Bhaskara Sega-I");
+		Satellites_Names.remove("Rohini RS-I");
+		Satellites_Names.remove("IRS-1A");
+		Display_Sat();
+	}
+	public void replacing() {
+		Satellites_Names.set(0,"Cartosat-2F");
+		Satellites_Names.set(1,"RISAT-2BR1");
+		Display_Sat();
+	}
+	public void sorting(){
+		Collections.sort(Satellites_Names);
+		Display_Sat();
+	}
+	public void getthird() { 
+		System.out.println("Third element is "+Satellites_Names.get(2));
+		Display_Sat();
+	}
+	
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Indian_Satellites obj=new Indian_Satellites();
+		obj.add();
+		obj.removing();
+		obj.replacing();
+		obj.sorting();
+		obj.getthird();
+	}
+}
