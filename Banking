@@ -1,0 +1,59 @@
+Java code that allows you to open a bank account ,deposit money ,writhdraw and check balance using Interface keyword.
+
+Code :
+
+interface Banking21{
+	void openaccount();
+	void show();
+	void deposit();
+	void withdrawl();
+}
+class Bank1 implements Banking21 {
+	private int accountno;
+    private String name;
+	private String account_type;
+	private long balance;
+	Scanner sc=new Scanner(System.in);
+	public void openaccount() {
+		System.out.println("Enter the name:");
+		name=sc.next();
+		System.out.println("Enter the accno:");
+		accountno = sc.nextInt();
+		System.out.println("Enter the accounttype:");
+		account_type=sc.next();
+		System.out.println("Enter the balance:");
+		balance =sc.nextLong();
+		}
+	public void show() {
+		System.out.println("the name is"+name);
+		System.out.println("the account number is"+accountno);
+		System.out.println("the account type is"+account_type);
+		System.out.println("the balance is"+balance);
+	}
+	public void deposit() {
+		long amt;
+		System.out.println("Enter the amount:");
+		amt=sc.nextLong();
+		balance=balance+amt;
+		System.out.println("the new balance is"+balance);
+	}
+	public void withdrawl() {
+		long amt;
+		System.out.println("withdrawl amount:");
+		amt=sc.nextLong();
+		if (balance >= amt) {
+			balance = balance -amt;
+			System.out.println("The balance after withdrawl:"+balance);
+		}
+		else {
+			System.out.println("Invalid amount");
+		}}}
+public class Bankinterface {
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Banking21 obj=new Bank1();
+		obj.openaccount();
+		obj.show();
+		obj.deposit();
+		obj.withdrawl();
+	}}
