@@ -1,0 +1,43 @@
+CODE:
+
+import java.util.*;
+
+public class Toyland {
+	    public static int[] findLargestGap(int numOfHouse, List<int[]> houseList) {
+	        houseList.sort(Comparator.comparingInt(a -> a[1]));
+	        
+	        int maxGap = 0;
+	        int house1 = 0;
+	        int house2 = 0;
+	        
+	        for (int i = 1; i < houseList.size(); i++) {
+	            int gap = houseList.get(i)[1] - houseList.get(i - 1)[1];
+	            if (gap > maxGap) {
+	                maxGap = gap;
+	                house1 = houseList.get(i - 1)[0];
+	                house2 = houseList.get(i)[0];
+	            }
+	        }
+	        return new int[]{house1, house2};
+	    }
+
+	    public static void main(String[] args) {
+	        Scanner scanner = new Scanner(System.in);
+	        System.out.print("Enter the number of houses: ");
+	        int numOfHouse = scanner.nextInt();
+	        
+	        List<int[]> houseList = new ArrayList<>();
+	        
+	        System.out.println("Enter the house numbers and their positions:");
+	        for (int i = 0; i < numOfHouse; i++) {
+	            int houseNumber = scanner.nextInt();
+	            int position = scanner.nextInt();
+	            houseList.add(new int[]{houseNumber, position});
+	        }
+	        
+	        int[] result = findLargestGap(numOfHouse, houseList);
+	        System.out.println("House numbers between which the largest gap exists: " +
+	        result[0] + " and " + result[1]);
+	    }
+	}
+
